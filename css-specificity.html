@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/league.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h1>CSS Specificity</h1>
+				</section>
+
+				<section>
+					<h2>Whats is specificity?</h2>
+					<p>Specificity is the means by which browsers decide which CSS property values are the most relevant to an element and, therefore, will be applied. Specificity is based on the matching rules which are composed of different sorts of CSS selectors.</p>
+				</section>
+
+				<section>
+					<h2>Selectors List - Lowest to Highest</h2>
+					<ul>
+						<li class="fragment">(*) Universal selector</li>
+						<li class="fragment">(p, div, h1, etc.) Element selector</li>
+						<li class="fragment">(.) Class selector</li>
+						<li class="fragment">(#) ID selector</li>
+						<li class="fragment">(style="color: yellow") Inline style</li>
+						<li class="fragment">(!important) !important</li>
+					</ul>
+				</section>
+
+				<section>
+						<h2>(*) Universal selector</h2>
+						<p>
+							The * selector selects all elements.
+						</p>
+						<pre><code class="css" data-trim data-line-numbers="1-3">
+							* {
+						    color: yellow;
+							}
+						</code></pre>
+				</section>
+
+				<section>
+					<section>
+						<h2>Element selector</h2>
+						<p>
+							The element selector selects all elements with the specified element name
+						</p>
+					</section>
+
+					<section>
+						<h3>(div) Element selector</h3>
+						<pre><code class="css" data-trim data-line-numbers="1-7">
+							div {
+						    color: yellow;
+							}
+						</code></pre>
+						<p>
+							Select and style all &lt;div&gt; elements
+						</p>
+					</section>
+
+					<section>
+						<h3>(div, p) Element selector</h3>
+						<pre><code class="css" data-trim data-line-numbers="1-7">
+							div, p {
+							  color: yellow;
+							}
+						</code></pre>
+						<p>
+							Select and style all &lt;div&gt; and &lt;p&gt; elements
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>(.) Class selector</h2>
+						<p>
+							The class selector selects elements with a specific class attribute
+						</p>
+					</section>
+
+					<section>
+						<h3>(.) Class selector</h3>
+						<pre><code class="css" data-trim data-line-numbers="1-7">
+							.some-class {
+							  color: yellow;
+							}
+						</code></pre>
+						<p>
+							Select and style all elements with class="some-class"<br>
+						</p>
+						<pre><code class="html" data-trim data-line-numbers="1-3">
+							&lt;div class="some-class"&gt; A yellow div &lt;/div&gt;
+							&lt;p class="some-class"&gt; A yellow paragraph &lt;/p&gt;
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>(p.some-class) Class selector</h3>
+						<pre><code class="css" data-trim data-line-numbers="1-7">
+							p.some-class {
+							  color: yellow;
+							}
+						</code></pre>
+						<p>
+							Style all &lt;p&gt; elements with class="some-class"
+						</p>
+						<pre><code class="html" data-trim data-line-numbers="1-3">
+							&lt;p class="some-class"&gt; A yellow paragraph &lt;/p&gt;
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+						<h2>(#) ID selector</h2>
+						<p>
+							The id selector styles the element with the specified id
+						</p>
+						<pre><code class="css" data-trim data-line-numbers="1-3">
+							#some-id {
+							  color: yellow;
+							}
+						</code></pre>
+						<p>
+							Style the element with id="some-id"
+						</p>
+						<pre><code class="html" data-trim data-line-numbers="1-3">
+							&lt;p id="some-id"&gt; Some yellow text &lt;/p&gt;
+						</code></pre>					
+				</section>
+
+				<section>	
+						<h2>Inline style</h2>
+						<p>
+							Styling within HTML will 'win' over anything in CSS
+						</p>
+						<pre><code class="html" data-trim data-line-numbers="1-3">
+							&lt;p style="color: yellow"&gt; Some yellow text &lt;/p&gt;
+						</code></pre>
+				</section>
+
+	   		<section>
+						<h2>!important</h2>
+						<p>
+							When an important rule is used it overrides ANY other declaration, wether in HTML, CSS
+						</p>		
+  					<pre><code class="css" data-trim data-line-numbers="1-3">
+							.some-class {
+							  background-color: yellow !important;
+							}
+							.some-class {
+							  background-color: red;
+							}
+						</code></pre>
+					</section>
+		
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
